@@ -9,6 +9,7 @@ template<class T> inline bool chmin(T& a, T b){if(a > b){a = b;return true;}retu
 template<class T> inline bool chmax(T& a, T b){if(a < b){a = b;return true;}return false;}
 
 int n;
+
 bool call(int A[], int i, int x){
     if(x == 0) return true;
     if(n <= i) return false;
