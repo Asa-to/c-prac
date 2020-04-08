@@ -2,19 +2,20 @@
 
 using namespace std;
 
-int n;
-int R[200009];
+struct Test{
+  vector<int> unko;
+  Test* next;
+};
+
+Test* nil;
 
 int main(void){
-  cin >> n;
-  cin >> R[0];
-  int maxj = -999999999;
-  int minj = R[0];
-  for(int i = 1; i < n; i++){
-    cin >> R[i];
-    maxj = max(maxj, R[i] - minj);
-    minj = min(minj, R[i]);
-  }
-  cout << maxj << endl;
+  auto p = (Test*)malloc(sizeof(Test));
+  nil = (Test*)malloc(sizeof(Test));
+  vector<pair<int, Test*> > tinko;
+  tinko.push_back(make_pair(0, p));
+  p -> unko.push_back(3);
+  cout << p -> unko.at(p -> unko.size() - 1) << endl << p -> unko.size();
+  cout << "yes!" << endl;
   return 0;
 }
