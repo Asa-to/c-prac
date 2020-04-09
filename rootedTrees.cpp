@@ -1,64 +1,86 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-struct tree{
-    int id;
-    int k;
-    tree* parent;
-    vector<pair<int, tree*> > childlen;
-    bool haveChild = false;
+struct Node{
+    int parent;
+    int left;
+    int right;
 };
+struct Node T[100009];
+int DepthList[100009];
+int nil = -1;
 
-tree *nil;
-
-int getDepth(tree* p){
-    int sum = 0;
-    while(p -> parent != nil){
-        ++sum;
-        p = p -> parent;
+int getDepth(int u){
+    int depth = 0;
+    while( T[u].parent != nil){
+        u = T[u].parent;
+        depth++;
     }
-    return sum;
+    return depth;
 }
 
-void printData(tree * p){
-    string type = getDepth(p) == 0 ? "root" : p -> haveChild ? "internal node" : "leaf";
-    cout << "node " << p -> id << ": parent = " << p -> parent -> id << ", depth = " << getDepth(p) << ", " << type << ", [";
-    for(int i = 0; i < p -> k; i++){
-        if(i + 1 < p -> k){
-            cout << p -> childlen[i].first << ", ";
-        }else{
-            cout << p -> childlen[i].first;
-        }
+void setDepth(int u, int depth){
+    DepthList[u] = depth;
+    if(T[u].left != nil){
+        setDepth(T[u].left, ++depth);
     }
-    cout << "]" << endl;
+    if(T[u].right != nil){
+        setDepth(T[u].right, depth);
+    }
+}
+
+void printChildlen(int u){
+    int child = T[u].left;
+    cout << "[";
+    while(child != nil){
+        cout << child;
+        if(T[child].right != nil){
+            cout << ", ";
+        }
+        child = T[child].right;
+    }
+    cout << "]";
+}
+
+string getType(int u){
+    return getDepth(u) == 0 ? "root" : T[u].left == nil ? "leaf" : "internal node";
+}
+
+void printData(int u){
+    cout << "node " << u << ": ";
+    cout << "parent = " << T[u].parent << ", ";
+    cout << "depth = " << getDepth(u) << ", ";
+    cout << getType(u) << ", ";
+    printChildlen(u);
+    cout << endl;
 }
 
 int main(void){
-    nil = (tree*)malloc(sizeof(tree));
     int n;
     cin >> n;
     int id, k;
-    tree* nodes[n];
     for(int i = 0; i < n; i++){
-        tree* p = (tree*)malloc(sizeof(tree));
-        p -> id = i;
-        nodes[i] = p;
+        T[i].parent = T[i].left = T[i].right = nil;
     }
-    nodes[0] -> parent = nil;
-    tree* now;
     for(int i = 0; i < n; i++){
-        now = nodes[i];
-        int id, k;
         cin >> id >> k;
         for(int j = 0; j < k; j++){
-            now -> haveChild = true;
-            int child;
+            int child, temp;
             cin >> child;
-            now -> childlen[j] = make_pair(child,nodes[child]);
+            if( j == 0) T[id].left = child;
+            else T[temp].right = child;
+            temp = child;
+            T[temp].parent = id;
         }
     }
-    for(auto i: nodes){
+    for(int i = 0; i < n; i++){
+        if(T[i].parent == nil){
+            setDepth(i, 0);
+            break;
+        }
+    }
+    for(int i = 0; i < n; i++){
         printData(i);
     }
     return 0;

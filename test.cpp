@@ -3,19 +3,18 @@
 using namespace std;
 
 struct Test{
-  vector<int> unko;
+  map<string, int> pasuta;
+  int age;
   Test* next;
 };
 
-Test* nil;
+Test* nil = (Test*)malloc(sizeof(Test));
 
 int main(void){
-  auto p = (Test*)malloc(sizeof(Test));
-  nil = (Test*)malloc(sizeof(Test));
-  vector<pair<int, Test*> > tinko;
-  tinko.push_back(make_pair(0, p));
-  p -> unko.push_back(3);
-  cout << p -> unko.at(p -> unko.size() - 1) << endl << p -> unko.size();
-  cout << "yes!" << endl;
+  nil -> age = 100;
+  cout << "yes" << endl;
+  nil -> pasuta.insert(make_pair("takosu", 13));
+  cout << "yes" << endl;
+  vector<int> childlen(0);
   return 0;
 }
