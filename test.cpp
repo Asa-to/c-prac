@@ -2,19 +2,14 @@
 
 using namespace std;
 
-struct Test{
-  map<string, int> pasuta;
-  int age;
-  Test* next;
-};
-
-Test* nil = (Test*)malloc(sizeof(Test));
-
 int main(void){
-  nil -> age = 100;
-  cout << "yes" << endl;
-  nil -> pasuta.insert(make_pair("takosu", 13));
-  cout << "yes" << endl;
-  vector<int> childlen(0);
+  int ans = 0;
+  int n;
+  cin >> n;
+  for(int i = 0; i < n; i++){
+    ans += 3 * pow(10,i);
+    cout << 3 * pow(10,i) << " i = " << i << " ans = " << ans << endl;
+  }
+  cout << ans << endl;
   return 0;
 }
