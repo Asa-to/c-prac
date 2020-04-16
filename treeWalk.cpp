@@ -3,30 +3,54 @@
 using namespace std;
 
 struct Node{
-    int parent;
-    int right;
-    int left;
+    int parent = -1;
+    int left = -1;
+    int right = -1;
 };
 
-void preorder(Node tree[], int id){
-    cout << id << " ";
-    if(tree[id].left = -1) return;
-    preorder(tree, tree[id].left);
-    if(tree[id].right = -1) return;
-    preorder(tree, tree[id].right);
+Node tree[26];
+
+void preorder(int id){
+    cout << " " << id;
+    if(tree[id].left != -1)preorder(tree[id].left);
+    if(tree[id].right != -1)preorder(tree[id].right);
+}
+
+void inorder(int id){
+    if(tree[id].left != -1)inorder(tree[id].left);
+    cout << " " << id;
+    if(tree[id].right != -1)inorder(tree[id].right);
+}
+
+void postOrder(int id){
+    if(tree[id].left != -1)postOrder(tree[id].left);
+    if(tree[id].right != -1)postOrder(tree[id].right);
+    cout << " " << id;
+}
+
+int getRoot(){
+    for(int i = 0; i < 26; i++){
+       if(tree[i].parent == -1){
+           return i;
+       }
+    }
+    return -1;
 }
 
 int main(void){
-    int n, id;
+    int n;
     cin >> n;
-    Node tree[n];
-    tree[n].parent = -1;
     for(int i = 0; i < n; i++){
-        cin >> id;
-        cin >> tree[id].left >> tree[id].right;
-        tree[tree[id].right].parent = id;
+        int id;
+        cin >> id >> tree[id].left >> tree[id].right;
         tree[tree[id].left].parent = id;
+        tree[tree[id].right].parent = id;
     }
     cout << "Preorder" << endl;
-    preorder(tree,0);
+    preorder(getRoot());
+    cout << endl << "Inorder" << endl;
+    inorder(getRoot());
+    cout << endl << "Postorder" << endl;
+    postOrder(getRoot());
+    return 0;
 }
