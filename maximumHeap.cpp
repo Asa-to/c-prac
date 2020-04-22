@@ -3,7 +3,6 @@
 using namespace std;
 
 vector<int> a;
-int H;
 
 int left(int a){
     return 2*a;
@@ -29,15 +28,16 @@ void maxHeapify(int i){
 }
 
 void buildMaxHeap(){
-    for(int i = H/2; 0 < i; i--){
+    for(int i = a.size()/2; 0 < i; i--){
         maxHeapify(i);
     }
 }
 
 int main(void){
-    cin >> H;
+    int n;
+    cin >> n;
     a.push_back(0);
-    for(int i = 1; i <= H; i++){
+    for(int i = 1; i <= n; i++){
         int t;
         cin >> t;
         a.push_back(t);
