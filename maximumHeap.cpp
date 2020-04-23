@@ -12,24 +12,17 @@ int right(int a){
     return 2*a+1;
 }
 
-int parent(int a){
-    return a/2;
-}
-
 void maxHeapify(int i){
     int l = left(i);
     int r = right(i);
-    //左の子、右の子、自分の中で値が最大のノードを選ぶ
-    int largest = distance(a.begin(),find(a.begin(), a.end(),max(a[i], max(a[l], a[r]))));
+    //自分、左の子、右の子の中でもっとも多き値をもつ節点を保持する
+    int largest = i;
+    if(r < a.size() && a[largest] < a[r])largest = r;
+    if(l < a.size() && a[largest] < a[l])largest = l;
+    //iの子のほうが大きかったら、子を上のノードにやらなきゃなので交換してもっかい呼ぶ
     if(largest != i){
-        swap(a[largest], a[i]);
+        swap(a[i], a[largest]);
         maxHeapify(largest);
-    }
-}
-
-void buildMaxHeap(){
-    for(int i = a.size()/2; 0 < i; i--){
-        maxHeapify(i);
     }
 }
 
@@ -42,7 +35,9 @@ int main(void){
         cin >> t;
         a.push_back(t);
     }
-    buildMaxHeap();
+    for(int i = n/2; 1 <= i; i--){
+        maxHeapify(i);
+    }
     a.erase(a.begin());
     for(auto i: a){
         cout << " " << i;
