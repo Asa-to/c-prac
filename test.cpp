@@ -3,5 +3,6 @@
 using namespace std;
 
 int main(void){
-	cout << (-1)-(-1);
+	multiset<int> a = {1,1,1,1,1,1};
+	cout << *(--a.end()) << endl;
 }
