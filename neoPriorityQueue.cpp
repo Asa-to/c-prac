@@ -49,7 +49,7 @@ int heapExtractMax(){
     int maxj = a[1];
     //一番後ろの値を一番手間に持ってきて、max-ヒープを作り直す。
     a[1] = a[H];
-    //値を一個消したので、ヒープサイズを変更
+    //ヒープサイズを変更して、実質値を一個消したことにする。
     H--;
     maxHeapify(1);
     return maxj;
