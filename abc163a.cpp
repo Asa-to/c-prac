@@ -2,8 +2,8 @@
 
 using namespace std;
 
-
 int main(void){
-    int n;
-    cin >> n;
+    double r;
+    cin >> r;
+    cout << 2 * r * 3.141592;
 }
