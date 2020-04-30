@@ -3,5 +3,10 @@
 using namespace std;
 
 int main(void){
-    cout << pow(3,4);
+    int n = 2000000;
+    cout << n << endl;
+    for(int i = 1; i <= n; i++){
+        cout << "insert" << " " << i << endl;
+    }
+    return 0;
 }
