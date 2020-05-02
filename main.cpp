@@ -3,10 +3,6 @@
 using namespace std;
 
 int main(void){
-    int n = 2000000;
-    cout << n << endl;
-    for(int i = 1; i <= n; i++){
-        cout << "insert" << " " << i << endl;
-    }
+    cout << bitset<8>(7 & (1<<1)) << endl;
     return 0;
 }
