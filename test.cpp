@@ -16,23 +16,12 @@ vector<int> IntegerToVector(int bit, int N){
     return S;
 }
 
-int main(void){
-    int N, W;
-    cin >> N >> W;
-    vector<int> a(N);
-    for(int i = 0; i < N; i++){
-        cin >> a[i];
-    }
+struct Node{
+    vector<int> a;
+};
 
-    //bit全探索で全ての組み合わせに対して和がWになるか調べる
-    int ans = 0;
-    for(int bit = 0; bit < (1<<N); bit++){
-        int sum = 0;
-        for(int i = 0; i < N; i++){
-            if(bit & (1<<i))sum += a[i];
-        }
-        //和がWならansをインクリメントする
-        if(sum == W)ans++;
-    }
-    cout << ans << endl;
+int main(void){
+    Node a;
+    a.a.push_back(1);
+    cout << a.a.size() << endl;
 }
