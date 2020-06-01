@@ -9,5 +9,8 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-    cout << fixed << (1e18) << endl;
+    ll a;
+    long double b;
+    cin >> a >> b;
+    cout << (a * (int)((b + 0.000000001) * 100)) / 100 << endl;
 }

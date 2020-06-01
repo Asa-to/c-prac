@@ -9,5 +9,15 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-    cout << fixed << (1e18) << endl;
+    int N;
+    cin >> N;
+    vector<int> l(N);
+    rep(i , N)cin >> l[i];
+    sort(l.begin(), l.end());
+    int sum = 0;
+    rep(i, N-1){
+        sum += l[i];
+    }
+    string ans = l[N-1] < sum ? "Yes" : "No";
+    cout << ans << endl;
 }

@@ -9,4 +9,7 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
+    double t, x;
+    cin >> t >> x;
+    cout << fixed << setprecision(10) << t / x << endl;
 }
