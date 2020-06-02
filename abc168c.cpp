@@ -15,7 +15,7 @@ int main(void){
     double jikan = (h / 12 + 1.0 / 12 * m / 60) * 360; 
     double hun = m / 60 * 360;
     double kaku = jikan < hun ? hun - jikan : jikan - hun;
-    kaku = kaku / 180 * M_PI;
+    kaku = kaku / 180 * 3.141592;
     b = sqrt(pow(a,2) + pow(c,2) - 2*a*c*cos(kaku));
     cout << fixed << setprecision(10) << b << endl;
 }
