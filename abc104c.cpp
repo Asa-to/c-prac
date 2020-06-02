@@ -9,5 +9,10 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-    cout << (1<<30) << endl;
+    int d, g;
+    cin >> d >> g;    
+    vector<int> p(d);
+    vector<int> c(d);
+    rep(i, d)cin >> p[i] >> c[i];
+    int ans = (1<<30);
 }
