@@ -7,32 +7,26 @@ typedef long long ll;
 template<typename T> bool chmax(T &a, T b) {if(a <= b){a = b; return true;}return false;}
 template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}return false;}
 
+#define MAX 100001
 #define WHITE 0
 #define BLACK 1
-vector<vector<pair<int, int> > > G;
-vector<int> colorList;
-vector<ll> distanceList;
+vector<vector<pair<int, int> > > G(MAX);
+vector<int> colorList(MAX, -1);
 
-void setDistance(int v, ll distance){
-    distanceList[v] = distance;
-    if(distance % 2 == 0){
-        colorList[v] = WHITE;
-    }else{
-        colorList[v] = BLACK;
-    }
+void dfs(int v, ll distance){
+    colorList[v] = distance % 2;
+    // cout << v + 1 << " " << colorList[v] << endl;
     for(int i = 0; i < G[v].size(); i++){
         int next = G[v][i].first;
-        if(distanceList[next])continue;
-        setDistance(next, distance += G[v][i].second);
+        ll next_distance = distance + G[v][i].second;
+        if(colorList[next] != -1)continue;
+        dfs(next, next_distance);
     }
 }
 
 int main(void){
     int n;
     cin >> n;
-    G.resize(n);
-    colorList.resize(n);
-    distanceList.resize(n);
     int m = n - 1;
     for(int i = 0; i < m; i++){
         int u,v,w;
@@ -41,8 +35,8 @@ int main(void){
         G[u].push_back(make_pair(v,w));
         G[v].push_back(make_pair(u,w));
     }
-    setDistance(0,0);
-    for(auto i: colorList){
-        cout << i << endl;
+    dfs(0,0);
+    for(int i = 0; i < n; i++){
+        cout << colorList[i] << endl;
     }
 }
