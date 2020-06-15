@@ -9,6 +9,12 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-	vector<int> a = {1,1,3};
-	cout << *--a.end() << endl;
+    int x, y;
+    cin >> x >> y;
+    if(y % 2 != 0 || x * 4 < y || y < x * 2){
+        cout << "No" << endl;
+    }else{
+        cout  << "Yes" << endl;
+    }
+    return 0;
 }
