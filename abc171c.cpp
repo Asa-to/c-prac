@@ -9,6 +9,14 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-    cout << "A = " << (int)'A' << endl;
-    cout << "a = " << (int)'a' << endl;
+    ll N;
+    cin >> N;
+    string ans = "";
+    while(N){
+        N--;
+        ans += 'a' + N % 26;
+        N /= 26;
+    }
+    reverse(ans.begin(), ans.end());
+    cout << ans << endl;
 }

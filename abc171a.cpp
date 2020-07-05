@@ -9,6 +9,11 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-    cout << "A = " << (int)'A' << endl;
-    cout << "a = " << (int)'a' << endl;
+    char a;
+    cin >> a;
+    if((int)a < (int)'a'){
+        cout << 'A' << endl;
+    }else {
+        cout << 'a' << endl;
+    }
 }

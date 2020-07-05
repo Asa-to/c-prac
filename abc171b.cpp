@@ -9,6 +9,12 @@ template<typename T> bool chmin(T &a, T b) {if(a >= b){a = b; return true;}retur
 
 
 int main(void){
-    cout << "A = " << (int)'A' << endl;
-    cout << "a = " << (int)'a' << endl;
+    int N, K;
+    cin >> N >> K;
+    vector<int> a(N);
+    rep(i,N)cin >> a[i];
+    sort(a.begin(), a.end());
+    ll sum = 0;
+    rep(i, K)sum += a[i];
+    cout << sum << endl;
 }
