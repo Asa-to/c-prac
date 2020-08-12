@@ -6,8 +6,11 @@ using namespace std;
 int main(void){
     int n;
     cin >> n;
+    //iからjまでの最小の計算コストが入ってる
     vector<vector<int> > m(n+1, vector<int>(n+1));
+    //左から行列行数又は列数が入ってる
     vector<int> p(n+1);
+    //行列の行数と列数を取ってる
     for(int i = 1; i <= n; i++){
         cin >> p[i-1] >> p[i];
     }
