@@ -19,4 +19,9 @@ bool chmin(T &a, T b) {
     return false;
 }
 
-int main(void) { printf("asato"); }
+int main(void) {
+    int a, b;
+    cin >> a >> b;
+    cout << (2 * a + 100) - b << endl;
+    return 0;
+}

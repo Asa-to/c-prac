@@ -4,6 +4,8 @@
     "editor.tabSize": 4
   },
   "files.associations": {
-    "__config": "cpp"
-  }
+    "__config": "cpp",
+    "ostream": "cpp"
+  },
+  "editor.defaultFormatter": "ms-vscode.cpptools"
 }
